@@ -44,8 +44,9 @@ class StepTracker {
     }
     void changeStepGoal(){ //Так и понял, что необходимо было бы сохранить предыдущее значение а не изначальное, но хорошая мысля пришла опосля)
         System.out.println("Укажите цель, в виде количества шагов");
-        if(scanner.nextInt() > 0){
-            goalByStepsPerDay = scanner.nextInt();
+        int proverkastep = scanner.nextInt();
+        if(proverkastep > 0){
+            goalByStepsPerDay = proverkastep;
         } else {
             System.out.println("Ошибка. Цель не может быть менее или равна 0.");
         }

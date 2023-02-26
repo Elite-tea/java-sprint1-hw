@@ -42,11 +42,13 @@ class StepTracker {
         // Сохранение полученных данных
         monthData.days[day] = step;
     }
-    void changeStepGoal(){
+    void changeStepGoal(){ //Так и понял, что необходимо было бы сохранить предыдущее значение а не изначальное, но хорошая мысля пришла опосля)
         System.out.println("Укажите цель, в виде количества шагов");
-        goalByStepsPerDay = scanner.nextInt();
-            if(goalByStepsPerDay <= 0){
-                    goalByStepsPerDay = 10000;
+        if(scanner.nextInt() > 0){
+            goalByStepsPerDay = scanner.nextInt();
+
+        } else {
+
             System.out.println("Ошибка. Цель не может быть менее или равна 0.");
         }
     }
@@ -61,13 +63,13 @@ class StepTracker {
 
         monthData = monthToData[mounth];    // получение соответствующего месяца
         int sumSteps = monthData.sumStepsFromMonth();   // получение суммы шагов за месяц
-         monthData.printDaysAndStepsFromMonth();    // количество пройденных шагов по дням;
-         System.out.println("Общее количество шагов за месяц: " + monthData.sumStepsFromMonth()); // общее количество шагов за месяц;
-         System.out.println("Максимальное пройденное количество шагов в месяце: " + monthData.maxSteps());  // максимальное пройденное количество шагов в месяце;
-         System.out.println("Среднее количество шагов: " + (monthData.sumStepsFromMonth() / monthToData[mounth].days.length)); // среднее количество шагов;
-         System.out.println("Пройденная дистанция (в км): " + converter.convertToKm(sumSteps)); // пройденная дистанция (в км);
-         System.out.println("Количество сожжённых килокалорий: " + converter.convertStepsToKilocalories(sumSteps)); // количество сожжённых килокалорий;
-         System.out.println("Лучшая серия: " + monthData.bestSeries(goalByStepsPerDay) + " дня подряд");// лучшая серия: максимальное количество подряд идущих дней, в течение которых количество шагов за день было равно или выше целевого.
-         System.out.println(); //дополнительный перенос строки
+        monthData.printDaysAndStepsFromMonth();    // количество пройденных шагов по дням;
+        System.out.println("Общее количество шагов за месяц: " + monthData.sumStepsFromMonth()); // общее количество шагов за месяц;
+        System.out.println("Максимальное пройденное количество шагов в месяце: " + monthData.maxSteps());  // максимальное пройденное количество шагов в месяце;
+        System.out.println("Среднее количество шагов: " + (monthData.sumStepsFromMonth() / monthToData[mounth].days.length)); // среднее количество шагов;
+        System.out.println("Пройденная дистанция (в км): " + converter.convertToKm(sumSteps)); // пройденная дистанция (в км);
+        System.out.println("Количество сожжённых килокалорий: " + converter.convertStepsToKilocalories(sumSteps)); // количество сожжённых килокалорий;
+        System.out.println("Лучшая серия: " + monthData.bestSeries(goalByStepsPerDay) + " дня подряд");// лучшая серия: максимальное количество подряд идущих дней, в течение которых количество шагов за день было равно или выше целевого.
+        System.out.println(); //дополнительный перенос строки
     }
 }

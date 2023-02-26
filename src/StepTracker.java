@@ -46,9 +46,7 @@ class StepTracker {
         System.out.println("Укажите цель, в виде количества шагов");
         if(scanner.nextInt() > 0){
             goalByStepsPerDay = scanner.nextInt();
-
         } else {
-
             System.out.println("Ошибка. Цель не может быть менее или равна 0.");
         }
     }
